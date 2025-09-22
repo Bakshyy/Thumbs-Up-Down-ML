@@ -11,7 +11,7 @@ mp_drawing = mp.solutions.drawing_utils
 
 cap = cv2.VideoCapture(0)
 
-labels = ["Thumbs Up", "Thumbs Down"]
+labels = ["Thumbs Down", "Thumbs Up"]
 
 with mp_hands.Hands(
     static_image_mode=False,
