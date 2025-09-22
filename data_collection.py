@@ -20,7 +20,8 @@ for gesture in GESTURES:
     os.makedirs(gesture_dir, exist_ok=True)
 
     count = 0
-    print(f"Capturing {gesture}... Press 'q' to quit early.")
+    print(f"--- Capturing {gesture} ---")
+    print("Press 'q' to quit early.\n")
 
     with mp_hands.Hands(
         static_image_mode=False,
@@ -35,6 +36,13 @@ for gesture in GESTURES:
             frame = cv2.flip(frame, 1)
             rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             results = hands.process(rgb)
+
+            # Display instructions on screen
+            instruction_text = f"Show {gesture.replace('_', ' ').title()} ({count+1}/{CAPTURE_COUNT})"
+            cv2.putText(frame, instruction_text,
+                        (30, 50),
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        1, (0, 255, 255), 3)
 
             if results.multi_hand_landmarks:
                 for hand_landmarks in results.multi_hand_landmarks:
@@ -51,3 +59,4 @@ for gesture in GESTURES:
 
 cap.release()
 cv2.destroyAllWindows()
+
