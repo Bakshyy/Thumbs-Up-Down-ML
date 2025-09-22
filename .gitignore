@@ -5,6 +5,24 @@ __pycache__/
 
 # C extensions
 *.so
+# Training artifacts
+*.keras
+*.h5
+*.tflite
+*.onnx
+*.pb
+
+# Raw datasets (images, videos, etc.)
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.gif
+*.mp4
+*.avi
+# folders you keep locally
+data/
+models/
 
 # Distribution / packaging
 .Python
